@@ -30,6 +30,8 @@ export class CDRWriter {
         this.buf.writeByte(b);
     }
 
+    uint8(b) { this.writeByte(b) ; }
+
     writeBytes(buf) {
         this.buf.append(buf, "binary");
     }
@@ -49,40 +51,51 @@ export class CDRWriter {
         this.buf.writeInt16(i);
     }
 
+    int16(i) { this.writeInt16(i) ; }
+
     writeUint16(i) {
         this.align(2);
         this.buf.writeUint16(i);
     }
+
+    uint16(i) { this.writeUint16(i) ; }
 
     writeInt32(i) {
         this.align(4);
         this.buf.writeInt32(i);
     }
 
+    int32(i) { this.writeInt32(i) ; }
+
     writeUint32(i) {
         this.align(4);
         this.buf.writeUint32(i);
     }
+    uint32(i) { this.writeUint32(i); }
 
     writeInt64(i) {
         this.align(8);
         this.buf.writeInt64(i);
     }
+    int64(i) { this.writeInt64(i); }
 
     writeUint64(i) {
         this.align(8);
         this.buf.writeUint64(i);
     }
+    uint64(i) { this.writeUint64(i); }
 
     writeFloat32(f) {
         this.align(4);
         this.buf.writeFloat32(f);
     }
+    float32( i) { this.writeFloat32(i) ; }
 
     writeFloat64(f) {
         this.align(8);
         this.buf.writeFloat64(f);
     }
+    float64(i){ this.writeFloat64(i); }
 
     writeChar(c) {
         this.writeByte(c.charCodeAt(0));
@@ -94,6 +107,8 @@ export class CDRWriter {
         this.buf.writeUTF8String(s);
         this.writeByte(0);
     }
+
+    string(s) { this.writeString(s) ; }
 
     writeSequenceLength(l) {
         this.writeUint32(l);

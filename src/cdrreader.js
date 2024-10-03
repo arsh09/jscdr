@@ -22,6 +22,8 @@ export class CDRReader {
         return this.buf.readByte();
     }
 
+    uint8(){ return this.readByte(); }
+
     readBytes(count) {
         var slice = this.buf.slice(this.pos, this.pos + count);
         this.buf.skip(count);
@@ -41,40 +43,56 @@ export class CDRReader {
         return this.buf.readInt16();
     }
 
+    int16(){return this.readInt16(); }
+
     readUint16() {
         this.align(2);
         return this.buf.readUint16();
     }
+
+    uint16(){return this.readUint16();}
 
     readInt32() {
         this.align(4);
         return this.buf.readInt32();
     }
 
+    int32(){return this.readInt32();}
+
     readUint32() {
         this.align(4);
         return this.buf.readUint32();
     }
+
+    uint32(){return this.readUint32();}
 
     readInt64() {
         this.align(8);
         return this.buf.readInt64();
     }
 
+    int64(){ return this.readInt64(); }
+
     readUint64() {
         this.align(8);
         return this.buf.readUint64();
     }
+
+    uint64(){ return this.readUint64() }
 
     readFloat32() {
         this.align(4);
         return this.buf.readFloat32();
     }
 
+    float32(){ this.readFloat32(); }
+
     readFloat64() {
         this.align(8);
         return this.buf.readFloat64();
     }
+
+    float64() { return this.readFloat64(); }
 
     readChar() {
         return String.fromCharCode(this.readByte());
@@ -88,7 +106,12 @@ export class CDRReader {
         return str;
     }
 
+    string() { return this.readString() ; }
+
     readSequenceLength() {
         return this.readUint32();
     }
+
+    sequenceLength(){ return this.readSequenceLength(); }
+
 }
